@@ -13,7 +13,7 @@ module Example
       manager[:salesforce_client_id]    = ENV['SALESFORCE_CLIENT_ID']     || 'ee9aa24b64d82c21535a'
       manager[:salesforce_secret]       = ENV['SALESFORCE_CLIENT_SECRET'] || 'ed8ff0c54067aefb808dab1ca265865405d08d6f'
 
-      manager[:salesforce_scopes]       = 'api refresh'
+      manager[:salesforce_scopes]       = 'api'
       manager[:salesforce_oauth_domain] = ENV['SALESFORCE_OAUTH_DOMAIN'] || 'https://login.salesforce.com'
       manager[:salesforce_callback_url] = '/auth/salesforce/callback'
     end
@@ -33,10 +33,9 @@ module Example
     get '/' do
       ensure_authenticated
       <<-EOS
-      <h2>Hello There, #{user.name}!</h2>
-      <h3>Rails Org Member: #{user.organization_member?('rails')}.</h3>
-      <h3>Publicized Rails Org Member: #{user.publicized_organization_member?('rails')}.</h3>
-      <h3>Rails Committer Team Member: #{user.team_member?(632)}.</h3>
+      <h2>Token, #{user.username}!</h2>
+      <h3>Instance URL, #{user.instance_url}</h3>
+      #{user.raw_info}
       EOS
     end
 

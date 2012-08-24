@@ -11,7 +11,7 @@ describe "Warden::Salesforce" do
 
     params = uri.query_values
     params['response_type'].should eql('code')
-    params['scope'].should eql('')
+    params['scope'].should eql('api')
     params['client_id'].should match(/\w{20}/)
     params['redirect_uri'].should eql('http://example.org/auth/salesforce/callback')
   end

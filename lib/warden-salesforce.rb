@@ -9,4 +9,5 @@ module Warden
 end
 
 require 'warden-salesforce/version'
+require 'warden-salesforce/user'
 require 'warden-salesforce/strategy'

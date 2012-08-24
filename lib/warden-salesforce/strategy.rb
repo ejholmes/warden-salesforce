@@ -11,16 +11,16 @@ Warden::Strategies.add(:salesforce) do
        env['rack.session']['salesforce_oauth_state'].size > 0 &&
        params['state'] == env['rack.session']['salesforce_oauth_state'])
       begin
-        #api = api_for(params['code'])
+        access_token = access_token(params['code'])
 
-        #success!(Warden::Github::Oauth::User.new(Yajl.load(user_info_for(api.token)), api.token))
+        success!(Warden::Salesforce::User.new(access_token))
       rescue OAuth2::Error
         %(<p>Outdated ?code=#{params['code']}:</p><p>#{$!}</p><p><a href="/auth/salesforce">Retry</a></p>)
       end
     else
       env['rack.session']['salesforce_oauth_state'] = state
       env['rack.session']['return_to'] = env['REQUEST_URI']
-      throw(:warden, [ 302, {'Location' => authorize_url}, [ ]])
+      throw(:warden, [ 302, {'Content-Type' => 'text/html', 'Location' => authorize_url}, [ ]])
     end
   end
 
@@ -40,6 +40,10 @@ private
       :scope        => scopes,
       :redirect_uri => callback_url
     )
+  end
+
+  def access_token(code)
+    client.auth_code.get_token(code, :redirect_uri => callback_url)
   end
 
   def state
