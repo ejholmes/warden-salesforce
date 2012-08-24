@@ -7,7 +7,7 @@ describe "Warden::Salesforce" do
     uri = Addressable::URI.parse(response.headers["Location"])
 
     uri.scheme.should eql('https')
-    uri.host.should eql('salesforce.com')
+    uri.host.should eql('login.salesforce.com')
 
     params = uri.query_values
     params['response_type'].should eql('code')

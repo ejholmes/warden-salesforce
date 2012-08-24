@@ -13,7 +13,7 @@ module Example
       manager[:salesforce_client_id]    = ENV['SALESFORCE_CLIENT_ID']     || 'ee9aa24b64d82c21535a'
       manager[:salesforce_secret]       = ENV['SALESFORCE_CLIENT_SECRET'] || 'ed8ff0c54067aefb808dab1ca265865405d08d6f'
 
-      manager[:salesforce_scopes]       = ''
+      manager[:salesforce_scopes]       = 'api refresh'
       manager[:salesforce_oauth_domain] = ENV['SALESFORCE_OAUTH_DOMAIN'] || 'https://login.salesforce.com'
       manager[:salesforce_callback_url] = '/auth/salesforce/callback'
     end
