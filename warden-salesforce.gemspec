@@ -1,24 +1,23 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
 
-require 'warden-github/version'
+require 'warden-salesforce/version'
 
 Gem::Specification.new do |s|
-  s.name        = "warden-github"
-  s.version     = Warden::Github::VERSION
+  s.name        = "warden-salesforce"
+  s.version     = Warden::Salesforce::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Corey Donohoe"]
-  s.email       = ["atmos@atmos.org"]
-  s.homepage    = "http://github.com/atmos/warden-github"
-  s.summary     = "A warden strategy for easy oauth integration with github"
+  s.authors     = ["Eric Holmes"]
+  s.email       = ["eric@ejholmes.net"]
+  s.homepage    = "http://github.com/ejholmes/warden-salesforce"
+  s.summary     = "A warden strategy for easy oauth integration with Salesforce.com and Databasedot.com"
   s.description = s.summary
 
-  s.rubyforge_project = "warden-github"
+  s.rubyforge_project = "warden-salesforce"
 
   s.add_dependency "json",   "~>1.5"
   s.add_dependency "warden", "~>1.0"
   s.add_dependency "oauth2", "~>0.5.2"
-  s.add_dependency "octokit", "~>1.9.4"
   s.add_dependency "rest-client", "~>1.6.1"
   s.add_dependency "yajl-ruby",     "~>1.1"
 

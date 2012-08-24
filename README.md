@@ -1,14 +1,14 @@
-warden-github
+warden-salesforce
 =============
 
-A [warden](http://github.com/hassox/warden) strategy that provides oauth authentication to github.  Find out more about enabling your application at github's [oauth quickstart](http://gist.github.com/419219).
+A [warden](http://github.com/hassox/warden) strategy that provides oauth authentication to salesforce.
 
-To test it out on localhost set your callback url to 'http://localhost:9292/auth/github/callback'
+To test it out on localhost set your callback url to 'http://localhost:9292/auth/salesforce/callback'
 
-There's an example app in [spec/app.rb](/atmos/warden-github/blob/master/spec/app.rb).
+There's an example app in [spec/app.rb](/ejholmes/warden-salesforce/blob/master/spec/app.rb).
 
 The Extension in Action
 =======================
     % gem install bundler
     % bundle install
-    % GITHUB_CLIENT_ID="<from GH>" GITHUB_CLIENT_SECRET="<from GH>" bundle exec rackup -p9393 -E none
+    % SALESFORCE_CLIENT_ID="<from SF>" SALESFORCE_CLIENT_SECRET="<from GH>" bundle exec rackup -p9393 -E none

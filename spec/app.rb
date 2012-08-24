@@ -7,15 +7,15 @@ module Example
     disable :show_exceptions
 
     use Warden::Manager do |manager|
-      manager.default_strategies :github
+      manager.default_strategies :salesforce
       manager.failure_app = BadAuthentication
 
-      manager[:github_client_id]    = ENV['GITHUB_CLIENT_ID']     || 'ee9aa24b64d82c21535a'
-      manager[:github_secret]       = ENV['GITHUB_CLIENT_SECRET'] || 'ed8ff0c54067aefb808dab1ca265865405d08d6f'
+      manager[:salesforce_client_id]    = ENV['SALESFORCE_CLIENT_ID']     || 'ee9aa24b64d82c21535a'
+      manager[:salesforce_secret]       = ENV['SALESFORCE_CLIENT_SECRET'] || 'ed8ff0c54067aefb808dab1ca265865405d08d6f'
 
-      manager[:github_scopes]       = ''
-      manager[:github_oauth_domain] = ENV['GITHUB_OAUTH_DOMAIN'] || 'https://github.com'
-      manager[:github_callback_url] = '/auth/github/callback'
+      manager[:salesforce_scopes]       = ''
+      manager[:salesforce_oauth_domain] = ENV['SALESFORCE_OAUTH_DOMAIN'] || 'https://login.salesforce.com'
+      manager[:salesforce_callback_url] = '/auth/salesforce/callback'
     end
 
     helpers do
@@ -45,7 +45,7 @@ module Example
       "Hello There, #{user.name}! return_to is working!"
     end
 
-    get '/auth/github/callback' do
+    get '/auth/salesforce/callback' do
       ensure_authenticated
       redirect '/'
     end
