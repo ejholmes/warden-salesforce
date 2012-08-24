@@ -17,6 +17,15 @@ module Warden
         raw_info['username']
       end
 
+      # Build a databasedotcom client if databasedotcom gem present
+      def client
+        Databasedotcom::Client.new.tap do |config|
+          config.instance_url  = instance_url
+          config.oauth_token   = token
+          config.refresh_token = refresh_token
+        end
+      end if defined?(Databasedotcom)
+
     end
   end
 end
